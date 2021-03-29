@@ -1,2 +1,3 @@
-# Bots-Section
-Different Bots for different things
+# Natis-Application-Bots
+
+These bots will automate the different types of application processes on the Natis website.
