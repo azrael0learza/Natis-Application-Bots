@@ -9,6 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
+
 PATH = "E:\programs\standard\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
 
@@ -117,10 +118,10 @@ time.sleep(2)
 
 ##Are you a Robot?...
 
-recap = driver.find_element_by_xpath('//*[@id="recaptcha-anchor"]/div[1]')
-recaphover = ActionChains(driver).move_to_element(recap)
-recaphover.perform()
-recap.click()
-
-time.sleep(2)
+#switch to recaptcha frame
+frames = driver.find_elements_by_xpath('//*[@id="Verification"]/div/div/iframe')
+driver.switch_to.frame(frames[0]);
+time.sleep(3)
+#click on checkbox to activate recaptcha
+driver.find_element_by_class_name("recaptcha-checkbox-border").click()
 
