@@ -125,3 +125,5 @@ time.sleep(3)
 #click on checkbox to activate recaptcha
 driver.find_element_by_class_name("recaptcha-checkbox-border").click()
 
+
+
