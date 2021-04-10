@@ -1,4 +1,4 @@
-#Code by Kagiso.S
+##https://github.com/azrael0learza##
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
@@ -117,13 +117,22 @@ time.sleep(3)
 
 
 ##Are you a Robot?...
+##As of Recpatcha v3, the best solutions are 
+##2captcha & anti-gate.com
 
-#switch to recaptcha frame
-frames = driver.find_elements_by_xpath('//*[@id="Verification"]/div/div/iframe')
-driver.switch_to.frame(frames[0]);
-time.sleep(3)
-#click on checkbox to activate recaptcha
-driver.find_element_by_class_name("recaptcha-checkbox-border").click()
+#This section will be commented out for the time bieng.
+
+##switch to recaptcha frame
+
+#frames = driver.find_elements_by_xpath('//*[@id="Verification"]/div/div/iframe')
+#driver.switch_to.frame(frames[0]);
+#time.sleep(3)
+
+##click on checkbox to activate recaptcha
+
+#driver.find_element_by_class_name("recaptcha-checkbox-border").click()
 #click audio challenge option
-driver.find_elements_by_class_name('rc-button goog-inline-block rc-button-audio').click()
+#driver.find_elements_by_class_name('rc-button goog-inline-block rc-button-audio').click()
+
+
 
