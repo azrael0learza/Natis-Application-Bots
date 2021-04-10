@@ -58,8 +58,8 @@ time.sleep(1)
 
 #Selection & Adding Information - 2
 #Options available are ['1 -' MOTOR CYCLE, '2 -' MV NOT EXCEEDING 3500 KG (EXCLUDING MC), '3 -' MOTOR VEHICLE (EXCLUDING MC)]
-#Default set to '3 -'
-licode = driver.find_element_by_xpath('//*[@id="page-top"]')
+#Default set to '3 - M'
+licode = driver.find_element_by_xpath('//*[@id="s2id_autogen4_search"]')
 licode.send_keys('3 -')
 
 time.sleep(2)
@@ -78,7 +78,7 @@ testtype2.click()
 
 time.sleep(1)
 
-idty = driver.find_element_by_xpath('//*[@id="page-top"]')
+idty = driver.find_element_by_xpath('//*[@id="s2id_autogen6_search"]')
 idty.send_keys('rsa i')
 
 time.sleep(2)
@@ -124,6 +124,6 @@ driver.switch_to.frame(frames[0]);
 time.sleep(3)
 #click on checkbox to activate recaptcha
 driver.find_element_by_class_name("recaptcha-checkbox-border").click()
-
-
+#click audio challenge option
+driver.find_elements_by_id("recaptcha-audio-button").click()
 
