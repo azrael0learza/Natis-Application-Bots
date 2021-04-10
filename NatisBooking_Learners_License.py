@@ -13,6 +13,16 @@ import time
 PATH = "E:\programs\standard\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
 
+###Change following values below for input fields on site
+#Options available for (TestingType) are ['reg' (REG NO CERTIFICATE), 'rsa' (RSA INDENTITY DOCUMENT), 'for' (FOREIGN IDENTITY DOCUMENT)]
+#Options available for (licenseCode) are ['1 -' (MOTOR CYCLE), '2 -' (MV NOT EXCEEDING 3500 KG (EXCLUDING MC)), '3 -' (MOTOR VEHICLE (EXCLUDING MC))]
+IdentityNo = 'Pass'
+SurnameOp = 'Pass'
+InitialsOp = 'Pass'
+licenseCode = 'Pass'
+TestingType = 'Pass'
+
+
 
 #Website & Wait Timer For Loading
 driver.get("https://online.natis.gov.za/#/")
@@ -21,31 +31,26 @@ time.sleep(2)
 
 
 #Region Selection [Replace Xpath with regoin desired]
+#1#Continue To Booking
+#2#Service Selection [Choose Service desired using Xpath]
 element = driver.find_element_by_xpath('//*[@id="ZA-GT"]')
 hover = ActionChains(driver).move_to_element(element)
 hover.perform()
 element.click()
 
 time.sleep(2)
-
-
-#Continue To Booking
-button = driver.find_element_by_xpath('//*[@id="alertModal"]/div/div/div[3]/button')
-button.click()
+#1#
+driver.find_element_by_xpath('//*[@id="alertModal"]/div/div/div[3]/button').click()
 
 time.sleep(2)
-
-
-#Service Selection [Choose Service desired using Xpath]
-learn = driver.find_element_by_xpath('//*[@id="main-view"]/div[4]/div[2]/div[1]/div/div[1]/div/a/h5')
-learn.click()
+#2#
+driver.find_element_by_xpath('//*[@id="main-view"]/div[4]/div[2]/div[1]/div/div[1]/div/a/h5').click()
 
 time.sleep(2)
 
 
 #Selection & Adding Information - 1
-single = driver.find_element_by_xpath('//*[@id="PrebookingForm"]/div[3]/div/div/div[1]/div[1]/div/div/div/div/div/label[1]')
-single.click()
+driver.find_element_by_xpath('//*[@id="PrebookingForm"]/div[3]/div/div/div[1]/div[1]/div/div/div/div/div/label[1]').click()
 
 time.sleep(2)
 
@@ -57,10 +62,10 @@ testtype.click()
 time.sleep(2)
 
 #Selection & Adding Information - 2
-#Options available are ['1 -' MOTOR CYCLE, '2 -' MV NOT EXCEEDING 3500 KG (EXCLUDING MC), '3 -' MOTOR VEHICLE (EXCLUDING MC)]
+#Options available ... Please see Line 18
 #Default set to '3 - M'
 licode = driver.find_element_by_xpath('//*[@id="s2id_autogen4_search"]')
-licode.send_keys('3 -')
+licode.send_keys(licenseCode)
 
 time.sleep(2)
 
@@ -69,7 +74,7 @@ time.sleep(2)
 
 
 #Selection & Adding Information - 3
-#Options available are ['reg' REG NO CERTIFICATE, 'rsa' RSA INDENTITY DOCUMENT, 'for' FOREIGN IDENTITY DOCUMENT]
+#Options available ... Please see Line 17
 #Default set to 'rsa i'
 testtype2 = driver.find_element_by_xpath('//*[@id="s2id_idDocTypeCd"]')
 hoversel2 = ActionChains(driver).move_to_element(testtype2)
@@ -79,7 +84,7 @@ testtype2.click()
 time.sleep(2)
 
 idty = driver.find_element_by_xpath('//*[@id="s2id_autogen6_search"]')
-idty.send_keys('rsa i')
+idty.send_keys(TestingType)
 
 time.sleep(2)
 
@@ -90,7 +95,7 @@ time.sleep(2)
 ##Selection & Adding Information - 4
 ##Identification Number
 idno = driver.find_element_by_id('idDocN')
-idno.send_keys('0000000000000')
+idno.send_keys(IdentityNo)
 
 time.sleep(2)
 idno.send_keys(Keys.RETURN)
@@ -99,7 +104,7 @@ time.sleep(2)
 
 ##Surname
 idsurn = driver.find_element_by_id('surname')
-idsurn.send_keys('TESTTEST')
+idsurn.send_keys(SurnameOp)
 
 time.sleep(2)
 idsurn.send_keys(Keys.RETURN)
@@ -108,7 +113,7 @@ time.sleep(2)
 
 ##Initials
 idini = driver.find_element_by_id('initials')
-idini.send_keys('TT')
+idini.send_keys(InitialsOp)
 
 time.sleep(2)
 idini.send_keys(Keys.RETURN)
