@@ -13,6 +13,10 @@ import time
 PATH = "E:\programs\standard\chromedriver.exe"
 driver = webdriver.Chrome(PATH)
 
+def waittimer():
+    time.sleep(2)
+
+
 ###Change following values below for input fields on site
 #Options available for (TestingType) are ['reg' (REG NO CERTIFICATE), 'rsa' (RSA INDENTITY DOCUMENT), 'for' (FOREIGN IDENTITY DOCUMENT)]
 #Options available for (licenseCode) are ['1 -' (MOTOR CYCLE), '2 -' (MV NOT EXCEEDING 3500 KG (EXCLUDING MC)), '3 -' (MOTOR VEHICLE (EXCLUDING MC))]
@@ -27,7 +31,7 @@ TestingType = 'Pass'
 #Website & Wait Timer For Loading
 driver.get("https://online.natis.gov.za/#/")
 
-time.sleep(2)
+waittimer()
 
 
 #Region Selection [Replace Xpath with regoin desired]
@@ -38,28 +42,28 @@ hover = ActionChains(driver).move_to_element(element)
 hover.perform()
 element.click()
 
-time.sleep(2)
+waittimer()
 #1#
 driver.find_element_by_xpath('//*[@id="alertModal"]/div/div/div[3]/button').click()
 
-time.sleep(2)
+waittimer()
 #2#
 driver.find_element_by_xpath('//*[@id="main-view"]/div[4]/div[2]/div[1]/div/div[1]/div/a/h5').click()
 
-time.sleep(2)
+waittimer()
 
 
 #Selection & Adding Information - 1
 driver.find_element_by_xpath('//*[@id="PrebookingForm"]/div[3]/div/div/div[1]/div[1]/div/div/div/div/div/label[1]').click()
 
-time.sleep(2)
+waittimer()
 
 testtype = driver.find_element_by_xpath('//*[@id="s2id_dlTstLicType"]/a')
 hoversel = ActionChains(driver).move_to_element(testtype)
 hoversel.perform()
 testtype.click()
 
-time.sleep(2)
+waittimer()
 
 #Selection & Adding Information - 2
 #Options available ... Please see Line 18
@@ -67,10 +71,10 @@ time.sleep(2)
 licode = driver.find_element_by_xpath('//*[@id="s2id_autogen4_search"]')
 licode.send_keys(licenseCode)
 
-time.sleep(2)
+waittimer()
 
 licode.send_keys(Keys.RETURN)
-time.sleep(2)
+waittimer()
 
 
 #Selection & Adding Information - 3
@@ -81,15 +85,15 @@ hoversel2 = ActionChains(driver).move_to_element(testtype2)
 hoversel2.perform()
 testtype2.click()
 
-time.sleep(2)
+waittimer()
 
 idty = driver.find_element_by_xpath('//*[@id="s2id_autogen6_search"]')
 idty.send_keys(TestingType)
 
-time.sleep(2)
+waittimer()
 
 idty.send_keys(Keys.RETURN)
-time.sleep(2)
+waittimer()
 
 
 ##Selection & Adding Information - 4
@@ -97,28 +101,28 @@ time.sleep(2)
 idno = driver.find_element_by_id('idDocN')
 idno.send_keys(IdentityNo)
 
-time.sleep(2)
+waittimer()
 idno.send_keys(Keys.RETURN)
 
-time.sleep(2)
+waittimer()
 
 ##Surname
 idsurn = driver.find_element_by_id('surname')
 idsurn.send_keys(SurnameOp)
 
-time.sleep(2)
+waittimer()
 idsurn.send_keys(Keys.RETURN)
 
-time.sleep(2)
+waittimer()
 
 ##Initials
 idini = driver.find_element_by_id('initials')
 idini.send_keys(InitialsOp)
 
-time.sleep(2)
+waittimer()
 idini.send_keys(Keys.RETURN)
 
-time.sleep(2)
+waittimer()
 
 
 ##Are you a Robot?...
@@ -131,7 +135,7 @@ time.sleep(2)
 
 #frames = driver.find_elements_by_xpath('//*[@id="Verification"]/div/div/iframe')
 #driver.switch_to.frame(frames[0]);
-#time.sleep(2)
+#waittimer()
 
 ##click on checkbox to activate recaptcha
 
